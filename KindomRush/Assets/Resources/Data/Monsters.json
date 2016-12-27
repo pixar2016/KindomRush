@@ -1,0 +1,18 @@
+﻿{
+  "1": {
+    "ID": 0,
+    "Name": 0,
+    "AttackSpeed": 0,
+    "AttackValue": {
+      "1": 0
+    }
+  },
+  "2": {
+    "ID": 0,
+    "Name": 0,
+    "AttackSpeed": 0,
+    "AttackValue": {
+      "1": 0
+    }
+  }
+}
