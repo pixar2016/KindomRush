@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Data\CS\Monsters.cs" />
+     <Compile Include="Assets\Data\CS\Skill.cs" />
+     <Compile Include="Assets\Data\CS\SkillEvent.cs" />
      <Compile Include="Assets\FingerEvent.cs" />
      <Compile Include="Assets\FingerGestures\Samples\Scripts\AdvancedPinchRotationSample.cs" />
      <Compile Include="Assets\FingerGestures\Samples\Scripts\FingerEventsSamplePart1.cs" />
@@ -81,8 +83,21 @@
      <Compile Include="Assets\FingerGestures\Utils\MoveToFinger.cs" />
      <Compile Include="Assets\Scripts\Battle\Objects\CharacterInfo.cs" />
      <Compile Include="Assets\Scripts\Battle\Objects\EntityManager.cs" />
+     <Compile Include="Assets\Scripts\Battle\Objects\MonsterInfo.cs" />
+     <Compile Include="Assets\Scripts\Battle\Objects\SoliderInfo.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\MonsterState\CreatureAtk.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\MonsterState\CreatureDead.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\MonsterState\CreatureIdle.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\MonsterState\CreatureMove.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\SoliderState\SoliderAtk.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\SoliderState\SoliderDead.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\SoliderState\SoliderIdle.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\SoliderState\SoliderMove.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\StateBase.cs" />
+     <Compile Include="Assets\Scripts\Battle\State\StateMachine.cs" />
      <Compile Include="Assets\Scripts\Battle\View\CharacterView.cs" />
      <Compile Include="Assets\Scripts\Battle\View\EntityViewManager.cs" />
+     <Compile Include="Assets\Scripts\Battle\View\MonsterView.cs" />
      <Compile Include="Assets\Scripts\DataPreLoader.cs" />
      <Compile Include="Assets\Scripts\Loader\AssetBundleLoadOperation.cs" />
      <Compile Include="Assets\Scripts\Loader\AssetBundleManager.cs" />
@@ -90,6 +105,34 @@
      <Compile Include="Assets\Scripts\Loader\MiniJSON.cs" />
      <Compile Include="Assets\Scripts\Loader\PersistentLoader.cs" />
      <Compile Include="Assets\Scripts\Loader\SimpleJSON.cs" />
+     <Compile Include="Assets\Scripts\Skill\SkillInfo.cs" />
+     <Compile Include="Assets\Scripts\Skill\SkillManager.cs" />
+     <Compile Include="Assets\Scripts\Trigger\TriggerManager.cs" />
+     <Compile Include="Assets\Scripts\Trigger\info\TriggerCondInfo.cs" />
+     <Compile Include="Assets\Scripts\Trigger\info\TriggerConfigData.cs" />
+     <Compile Include="Assets\Scripts\Trigger\info\TriggerEffectInfo.cs" />
+     <Compile Include="Assets\Scripts\Trigger\info\TriggerGroup.cs" />
+     <Compile Include="Assets\Scripts\Trigger\info\TriggerInfo.cs" />
+     <Compile Include="Assets\Scripts\Trigger\logic\TriggerCondBase.cs" />
+     <Compile Include="Assets\Scripts\Trigger\logic\TriggerCondLogic_ActionEnd.cs" />
+     <Compile Include="Assets\Scripts\Trigger\logic\TriggerCondLogic_SkillEvent.cs" />
+     <Compile Include="Assets\Scripts\Trigger\logic\TriggerEffectBase.cs" />
+     <Compile Include="Assets\Scripts\Trigger\logic\TriggerEffectLogic_Action.cs" />
+     <Compile Include="Assets\Scripts\Trigger\logic\TriggerEffectLogic_SkillEvent.cs" />
+     <Compile Include="Assets\TimerSample.cs" />
+     <Compile Include="Assets\Utils\EventMgr\DispatcherEventInvok.cs" />
+     <Compile Include="Assets\Utils\EventMgr\Event.cs" />
+     <Compile Include="Assets\Utils\EventMgr\EventListenerData.cs" />
+     <Compile Include="Assets\Utils\EventMgr\EventsDispatcher.cs" />
+     <Compile Include="Assets\Utils\EventMgr\EventsMgr.cs" />
+     <Compile Include="Assets\Utils\EventMgr\IEvent.cs" />
+     <Compile Include="Assets\Utils\EventMgr\IEventDispatcher.cs" />
+     <Compile Include="Assets\Utils\EventMgr\InvokBase.cs" />
+     <Compile Include="Assets\Utils\EventMgr\MiniEventDispatcher.cs" />
+     <Compile Include="Assets\Utils\EventMgr\SampleEvent.cs" />
+     <Compile Include="Assets\Utils\EventMgr\SampleObservedComponent.cs" />
+     <Compile Include="Assets\Utils\EventMgr\SampleObserverComponent.cs" />
+     <Compile Include="Assets\Utils\EventMgr\testEvent.cs" />
      <Compile Include="Assets\Utils\ExcelTools\ExcelTools.cs" />
      <Compile Include="Assets\Utils\ExcelTools\ExcelUtility.cs" />
      <Compile Include="Assets\Utils\FileUtils.cs" />
@@ -102,8 +145,12 @@
      <Compile Include="Assets\Utils\LitJson\JsonWriter.cs" />
      <Compile Include="Assets\Utils\LitJson\Lexer.cs" />
      <Compile Include="Assets\Utils\LitJson\ParserToken.cs" />
-     <Compile Include="Assets\Utils\PathTools\PathTools.cs" />
+     <Compile Include="Assets\Utils\PathTools\ConvertJsonToPath.cs" />
+     <Compile Include="Assets\Utils\PathTools\ConvertPathToJson.cs" />
      <Compile Include="Assets\Utils\PathTools\SavePath.cs" />
+     <Compile Include="Assets\Utils\PathTools\TestWindow.cs" />
+     <Compile Include="Assets\Utils\PathTools\WritePath.cs" />
+     <Compile Include="Assets\Utils\Timer\TimerSystem.cs" />
      <Compile Include="Assets\animManager\Animate.cs" />
      <Compile Include="Assets\animManager\AnimationCache.cs" />
      <Compile Include="Assets\animManager\MeshAnimation.cs" />
@@ -115,6 +162,7 @@
      <Compile Include="Assets\testFinger.cs" />
      <None Include="Assets\Readme.txt" />
      <None Include="Assets\Data\CSModel.txt" />
+     <None Include="Assets\Resources\Config\monster1.txt" />
      <None Include="Assets\Resources\Config\SavageBird.txt" />
      <None Include="Assets\Resources\Shader\Tile.shader" />
  <Reference Include="UnityEngine.UI">
@@ -124,22 +172,22 @@
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="HeroClient">
- <HintPath>D:/KindomRush/KindomRush/Assets/RuntimeLibs/HeroClient.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/RuntimeLibs/HeroClient.dll</HintPath>
  </Reference>
  <Reference Include="HeroLogic">
- <HintPath>D:/KindomRush/KindomRush/Assets/RuntimeLibs/HeroLogic.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/RuntimeLibs/HeroLogic.dll</HintPath>
  </Reference>
  <Reference Include="Excel">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Excel.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Excel.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Newtonsoft.Json.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/System.Data.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -1,18 +1,123 @@
 ﻿using UnityEngine;
 using System.Collections;
+using EventDispatcherSpace;
 
-public class CharacterInfo {
-
+public class CharacterInfo
+{
     //序列ID
     public int Id;
     public int charId;
-    
     public string charName;
+    public Vector3 position;
+    public Vector3 rotation;
+    public string actionName;
+    
+    //用于广播事件
+    public MiniEventDispatcher eventDispatcher;
+    //攻击目标
+    public CharacterInfo attackCharInfo;
+    //属性
+    public float hp;
+    public float hpMax;
+    //攻击间隔
+    public float attackTime;
 
-    public CharacterInfo(int creatureIndexId, int creatureId)
+    public CharacterInfo()
     {
-        Id = creatureIndexId;
-        charId = creatureId;
-        charName = "drop";
+        eventDispatcher = new MiniEventDispatcher();
+        position = new Vector3(0, 0, 0);
+        rotation = new Vector3(0, 0, 0);
+    }
+
+    public void SetPosition(float x, float y, float z)
+    {
+        position = new Vector3(x, y, z);
+    }
+    public Vector3 GetPosition()
+    {
+        return position;
+    }
+
+    public void SetRotation(float x, float y, float z)
+    {
+        rotation = new Vector3(x, y, z);
+    }
+    public Vector3 GetRotation()
+    {
+        return rotation;
+    }
+    public float GetSpeed()
+    {
+        return 3;
+    }
+
+    public bool IsDead()
+    {
+        return false;
+    }
+
+    public void DoAction(string actionName)
+    {
+        //Debug.Log("Dispatching: SampleEvent " + sampleEvent);
+        this.actionName = actionName;
+        this.eventDispatcher.Broadcast("DoAction", actionName);
+    }
+
+    public virtual void ChangeState(string _state)
+    {
+
+    }
+
+    public virtual void SetState(string _state)
+    {
+
+    }
+
+    //开始普通攻击
+    public virtual void StartAttack()
+    {
+
+    }
+    //开始主动技能或被动技能
+    public virtual void StartSkill(int skillId)
+    {
+
+    }
+    //向上走
+    public virtual void RunUp()
+    {
+        DoAction("run1");
+    }
+    //向下走
+    public virtual void RunDown()
+    {
+        DoAction("run1");
+    }
+    //向右走
+    public virtual void RunRight()
+    {
+        DoAction("run1");
+    }
+    //向左走
+    public virtual void RunLeft()
+    {
+        DoAction("run1");
+    }
+    //对目标造成普通攻击伤害
+    public virtual void Hurt()
+    {
+
+    }
+    //得到左右位置的坐标 1-左 2-右
+    public virtual void GetAroundPos(int id)
+    {
+        if (id == 1)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }

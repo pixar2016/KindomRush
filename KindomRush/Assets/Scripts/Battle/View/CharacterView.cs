@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Hero;
+using EventDispatcherSpace;
 
 public class CharacterView {
 
@@ -11,6 +12,7 @@ public class CharacterView {
     public CharacterView(CharacterInfo charInfo)
     {
         this.charInfo = charInfo;
+        this.charInfo.eventDispatcher.Register("DoAction", DoAction);
     }
 
     public void LoadModel()
@@ -25,13 +27,17 @@ public class CharacterView {
             charAnim = charObj.AddComponent<Animate>();
         }
         charAnim.OnInit(AnimationCache.getInstance().getAnimation(charInfo.charName));
-        charAnim.startAnimation();
+        charAnim.startAnimation("idle");
     }
 
-    public void DoAction(string actionName)
+    public void DoAction(object[] data)
     {
-
+        charAnim.startAnimation(data[0].ToString());
     }
 
-
+    public void Update()
+    {
+        charObj.transform.position = charInfo.GetPosition();
+        charObj.transform.eulerAngles = charInfo.GetRotation();
+    }
 }

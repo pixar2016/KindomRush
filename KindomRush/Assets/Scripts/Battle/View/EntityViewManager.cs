@@ -14,25 +14,56 @@ public class EntityViewManager
         return instance;
     }
 
-    public Dictionary<int, CharacterView> creatures;
-
+    public Dictionary<int, CharacterView> monsters;
+    public Dictionary<int, CharacterView> soliders;
 
     private EntityViewManager()
     {
-        creatures = new Dictionary<int, CharacterView>();
+        monsters = new Dictionary<int, CharacterView>();
+        soliders = new Dictionary<int, CharacterView>();
+        EntityManager.getInstance().eventDispatcher.Register("AddMonster", AddMonster);
+        EntityManager.getInstance().eventDispatcher.Register("AddSolider", AddSolider);
     }
 
-    public void AddCreature(CharacterInfo charInfo)
+    public void AddMonster(object[] data)
     {
+        CharacterInfo charInfo = (CharacterInfo)data[0];
         CharacterView charView = new CharacterView(charInfo);
         charView.LoadModel();
-        if (creatures.ContainsKey(charInfo.Id))
+        if (monsters.ContainsKey(charInfo.Id))
         {
-            creatures[charInfo.Id] = charView;
+            monsters[charInfo.Id] = charView;
         }
         else
         {
-            creatures.Add(charInfo.Id, charView);
+            monsters.Add(charInfo.Id, charView);
+        }
+    }
+
+    public void AddSolider(object[] data)
+    {
+        CharacterInfo charInfo = (CharacterInfo)data[0];
+        CharacterView charView = new CharacterView(charInfo);
+        charView.LoadModel();
+        if (soliders.ContainsKey(charInfo.Id))
+        {
+            soliders[charInfo.Id] = charView;
+        }
+        else
+        {
+            soliders.Add(charInfo.Id, charView);
+        }
+    }
+
+    public void Update()
+    {
+        foreach (int key in soliders.Keys)
+        {
+            soliders[key].Update();
+        }
+        foreach (int key in monsters.Keys)
+        {
+            monsters[key].Update();
         }
     }
 }

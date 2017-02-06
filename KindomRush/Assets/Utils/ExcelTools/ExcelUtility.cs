@@ -104,7 +104,7 @@ public class ExcelUtility
 			//准备一个字典存储每一行的数据
 			Dictionary<string, object> row = new Dictionary<string, object> ();
 			for (int j = 0; j < colCount; j++) {
-                if (mSheet.Rows[i][j].ToString() == "")
+                if (mSheet.Rows[1][j].ToString() == "")
                 {
                     continue;
                 }
@@ -340,20 +340,28 @@ public class ExcelUtility
         StringBuilder fieldType = new StringBuilder();
         if (fieldTypeString == "int")
         {
-            fieldType.Append("\t\t\tinfo._");
+            fieldType.Append("\t\t\tif(jsonObject[\"");
+            fieldType.Append(field);
+            fieldType.Append("\"] != null){\n");
+            fieldType.Append("\t\t\t\tinfo._");
             fieldType.Append(field);
             fieldType.Append(" = " + fieldTypeString);
             fieldType.Append(".Parse(jsonObject[\"");
             fieldType.Append(field);
             fieldType.Append("\"].ToString());\n");
+            fieldType.Append("\t\t\t}\n");
         }
         else if (fieldTypeString == "string")
         {
-            fieldType.Append("\t\t\tinfo._");
+            fieldType.Append("\t\t\tif(jsonObject[\"");
+            fieldType.Append(field);
+            fieldType.Append("\"] != null){\n");
+            fieldType.Append("\t\t\t\tinfo._");
             fieldType.Append(field);
             fieldType.Append(" = jsonObject[\"");
             fieldType.Append(field);
             fieldType.Append("\"].ToString();\n");
+            fieldType.Append("\t\t\t}\n");
         }
         return fieldType.ToString();
     }

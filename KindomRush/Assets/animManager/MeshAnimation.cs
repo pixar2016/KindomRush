@@ -10,16 +10,23 @@ public class MeshAnimation
     public string actionName;
     public float delay;
     public bool active;
+    //是否循环
+    public bool loop;
     //动画帧所属图片
     public string texture;
+    //动画帧数
+    public int count;
+    //动画总时间
+    public float animTime;
     public MeshAnimation()
     {
         frameList = new List<SpriteFrame>();
     }
     //创建MeshAnimation
-    public void createWithSpriteFrames(List<SpriteFrame> animFrames, float delays)
+    public void createWithSpriteFrames(List<SpriteFrame> animFrames, float delays, bool isLoop)
     {
         delay = delays;
+        loop = isLoop;
         if (animFrames.Count > 0)
         {
             texture = animFrames[0].textureName;
@@ -28,6 +35,13 @@ public class MeshAnimation
         {
             frameList.Add(frame);
         }
+        count = animFrames.Count;
+        animTime = count * delay;
+    }
+    //得到动画总时间
+    public float getAnimTime()
+    {
+        return animTime;
     }
 }
 

@@ -63,12 +63,6 @@ public class ExcelTools : EditorWindow
 		instance.Show();
 	}
 
-    [MenuItem("Plugins/GenerateNode")]
-    static void GenerateNode()
-    {
-        Debug.Log("GenerateNode");
-    }
-
 	void OnGUI()
 	{
 		DrawOptions();

@@ -53,10 +53,10 @@ public class AnimationCache
         }
     }
 
-    public MeshAnimation createAnimation(string imageName, int start, int end, float delay)
+    public MeshAnimation createAnimation(string imageName, int start, int end, float delay, bool isLoop = true)
     {
         List<SpriteFrame> animFrames = new List<SpriteFrame>();
-        for (int i = start; i <= end; i = i+2)
+        for (int i = start; i <= end; i++)
         {
             SpriteFrame frame = SpriteFrameCache.getInstance().getSpriteFrame(imageName + i + ".png");
             if (frame != null)
@@ -65,7 +65,7 @@ public class AnimationCache
             }
         }
         MeshAnimation anim = new MeshAnimation();
-        anim.createWithSpriteFrames(animFrames, delay);
+        anim.createWithSpriteFrames(animFrames, delay, isLoop);
         return anim;
     }
 }

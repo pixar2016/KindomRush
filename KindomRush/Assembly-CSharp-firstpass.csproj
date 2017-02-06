@@ -64,6 +64,7 @@
      <Compile Include="Assets\Plugins\FingerGestures\TouchScreenGestures.cs" />
      <None Include="Assets\Readme.txt" />
      <None Include="Assets\Data\CSModel.txt" />
+     <None Include="Assets\Resources\Config\monster1.txt" />
      <None Include="Assets\Resources\Config\SavageBird.txt" />
      <None Include="Assets\Resources\Shader\Tile.shader" />
  <Reference Include="UnityEngine.UI">
@@ -73,22 +74,22 @@
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="HeroClient">
- <HintPath>D:/KindomRush/KindomRush/Assets/RuntimeLibs/HeroClient.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/RuntimeLibs/HeroClient.dll</HintPath>
  </Reference>
  <Reference Include="HeroLogic">
- <HintPath>D:/KindomRush/KindomRush/Assets/RuntimeLibs/HeroLogic.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/RuntimeLibs/HeroLogic.dll</HintPath>
  </Reference>
  <Reference Include="Excel">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Excel.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Excel.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Newtonsoft.Json.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>D:/KindomRush/KindomRush/Assets/Utils/PluginsDLL/System.Data.dll</HintPath>
+ <HintPath>E:/GitHub/KindomRush/KindomRush/Assets/Utils/PluginsDLL/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

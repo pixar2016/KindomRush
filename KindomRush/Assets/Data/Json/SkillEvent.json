@@ -1,0 +1,20 @@
+﻿[
+  {
+    "id": 1.0,
+    "triggerId": 1.0,
+    "condName1": "SkillEvent",
+    "condParam1": "start",
+    "condName2": null,
+    "condParam2": null,
+    "effName1": "Action",
+    "effParam1": "attack",
+    "effName2": "SkillEvent",
+    "effParam2": "end",
+    "effName3": null,
+    "effParam3": null,
+    "effName4": null,
+    "effParam4": null,
+    "effName5": null,
+    "effParam5": null
+  }
+]
